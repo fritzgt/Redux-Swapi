@@ -1,15 +1,12 @@
 import { FETCHING, SUCCESS, FAILURE } from "../actions";
 const initialState = {
   // Array characters, Boolean fetching, null error.
-  characters: [
-    {
-      character: null,
-      fetching: false,
-      error: ""
-    }
-  ]
+  characters: [],
+  error: "",
+  fetching: false
 };
 export const charsReducer = (state = initialState, action) => {
+  // console.log("Reducer:", action);
   switch (action.type) {
     // Fill me in with the important reducers
     // action types should be FETCHING, SUCCESS and FAILURE
@@ -17,20 +14,22 @@ export const charsReducer = (state = initialState, action) => {
     case FETCHING:
       return {
         ...state,
-        fetching: true,
-        error: null
+        characters: [],
+        error: "",
+        fetching: true
       };
     case SUCCESS:
+      console.log("Array from Reducer", action.payload);
       return {
         ...state,
-        character: action.payload,
+        error: "",
         fetching: false,
-        error: null
+        characters: action.payload
       };
     case FAILURE:
       return {
         ...state,
-        character: "",
+        characters: [],
         fetching: false,
         error: action.payload
       };
