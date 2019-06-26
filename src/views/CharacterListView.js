@@ -5,6 +5,9 @@ import { CharacterList } from "../components";
 // import actions
 import { getCharacters } from "../actions";
 
+//Loader spinner
+import Loader from "react-loader-spinner";
+
 class CharacterListView extends React.Component {
   // constructor() {
   //   super();
@@ -18,7 +21,7 @@ class CharacterListView extends React.Component {
   render() {
     if (this.props.fetching) {
       // return something here to indicate that you are fetching data
-      return console.log("Fetching for ever");
+      return <Loader type="Audio" color="#somecolor" height={80} width={80} />;
     }
     return (
       <div className="CharactersList_wrapper">
